@@ -23,10 +23,11 @@ passport.deserializeUser((id, done) => {
 passport.use(
     new GoogleStrategy(
         {
-        clientID: keys.googleClientID,
-        clientSecret: keys.googleClientSecret,
-        //route the user will be sent to after they granted us permissions
-        callbackURL: '/auth/google/callback'
+            clientID: keys.googleClientID,
+            clientSecret: keys.googleClientSecret,
+            //route the user will be sent to after they granted us permissions
+            callbackURL: '/auth/google/callback',
+            proxy: true
         }, 
         (accessToken, refreshToken, profile, done) => {
             //by the time this executes, we already have user info and 
