@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
 const cookieSession = require('cookie-session');
 const passport = require('passport');
@@ -9,6 +10,7 @@ require('./services/passport');
 mongoose.connect(keys.mongoURI);
     //app is used to set up configuration that listens for incoming requests
 const app = express();
+app.use(bodyParser.json());// takes payload from post/put req parsers it and adds it to req as req.body
     // enables cookies inside of our application
 app.use(
     cookieSession({
